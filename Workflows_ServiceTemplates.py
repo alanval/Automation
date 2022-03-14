@@ -25,11 +25,9 @@ def genera_devices(urlx,usernamex,passwx,headersx):
 
 
 def main():
-	url2='https://10.150.0.230:9182/vnms/appliance/appliance?offset=0&limit=5000' 
+	url2='https://1.1.1.1:9352/appliance/appliance?offset=0&limit=5000' 
 	print('')
-	print('**SDWAN Workflows-Service Templates Script**')
-	print("              by Duque Valdes")
-	print('____________________________________________')	
+	print('**SDWAN Workflows-Service Templates Script**')	
 	print('')
 	username = input('User: ' )
 	passw = input('Pass: ' )
@@ -40,7 +38,7 @@ def main():
 	lista_devices=genera_devices(url2,username,passw,headers) 
 	total=len(lista_devices)		
 	for z in lista_devices:		
-		url='https://10.150.0.230:9182/nextgen/template/'+z+'/associations'
+		url='https://1.1.1.1:7777/next/template/'+z+'/associations'
 		lista=[]
 		try:
 			json_data=objeto(url,username,passw,headers) 
