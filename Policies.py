@@ -38,9 +38,7 @@ def genera_devices(urlx,usernamex,passwx,headersx):
 def main():
 	url2='https://10.150.0.230:9182/vnms/appliance/appliance?offset=0&limit=5000' 
 	print('')
-	print('**SDWAN Policies Script**')
-	print("   by Duque Valdes")
-	print('_________________________')
+	print('**SDWAN Policies Script**')	
 	username = input('User: ' )
 	passw = input('Pass: ' )
 	print('')
@@ -55,7 +53,7 @@ def main():
 	archivo_texto.write('Total Appliances:  ' +str(total)+'\n')	
 	for z in lista_devices:
 		cont=cont+1
-		url='https://10.150.112.209:9182/api/config/devices/device/' + z + '/config/orgs/org-services/EY-Global/sd-wan/policies/sdwan-policy-group'
+		url='https://1.1.1.1:7777/api/config/devices/device/' + z + '/config/orgs/org-services/XZS'
 		try:
 			json_data=objeto(url,username,passw,headers) 
 
