@@ -5,20 +5,20 @@ from flask_marshmallow import Marshmallow
 import os
 
 
-#INIT app
+
 app=Flask(__name__)
 basedir=os.path.abspath(os.path.dirname(__file__))
 
-#Database
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://root:root@localhost/testdb'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-#Init db
+
 db=SQLAlchemy(app)
 #Init ma
 ma=Marshmallow(app)
 
-#HECTAREAS Class/Model
+
 class Hectareas(db.Model):
     __tablename__ = 'registro'
     id = db.Column(db.Integer, primary_key=True)
@@ -31,16 +31,16 @@ class Hectareas(db.Model):
         self.empresa_id = empresa_id
         self.ha = ha
 
-#Hectareas Schema
+
 class HectareaSchema(ma.Schema):
     class Meta:
         fields = ('id','usuario_id', 'empresa_id', 'ha')
 
-#Init Schema
+
 hectarea_schema = HectareaSchema()
 hectareas_schema = HectareaSchema(many=True)
 
-#Crea Registro
+
 @app.route('/nuevo', methods=['POST'])
 def add_regisro():    
     usuario = request.json['usuario_id']    
@@ -64,19 +64,18 @@ def add_regisro():
         return hectarea_schema.jsonify(result)  
  
 
-#Busca por Empresa
+
 @app.route('/empresa/<id>', methods=['GET'])
 def get_empresa(id):
     empresa=Hectareas.query.filter_by(empresa_id=id)
     return hectareas_schema.jsonify(empresa)
 
-#Busca por Usuario
+
 @app.route('/usuario/<id>', methods=['GET'])
 def get_usuario(id):  
     usuario = Hectareas.query.filter_by(usuario_id=id)
     return hectareas_schema.jsonify(usuario)
 
-#Busca todos registros
 @app.route('/registros', methods=['GET'])
 def get_registros():
     all_registros=Hectareas.query.all()
