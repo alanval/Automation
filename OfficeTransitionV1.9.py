@@ -7,8 +7,8 @@ import socket
 def get_credentials(secondary_credentials):		#Appends "secondary_credentials" dictionary (containing 2 items: username & password) and 2 other dictionaries to list named "credentials"
     credentials = []
     credentials.append(secondary_credentials)
-    credentials.append({'username': 'eylogin', 'password':'ey$ecure'})
-    credentials.append({'username': 'eylogin', 'password':'cisco2'})
+    credentials.append({'username': 'login', 'password':'$ecure'})
+    credentials.append({'username': 'login', 'password':'cisco2'})
     return credentials   #returns full list containing 3 dictionaries
 
 
@@ -187,7 +187,7 @@ def run():
 #Asks for TACACS username and password
 
 	print('\nEnter your TACACS credentials')
-	secondary_username = 'A2135864-3'
+	secondary_username = 'A22222222-3'
 	secondary_password = 'U=VREt@5d7wT4Jz'
 	
 #Next writes the provided credentials to the "credentials" variable and appends local creds defined in the get_credentials function
